@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,13 +13,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button btnEntrar = findViewById(R.id.btnEntrar);
-        btnEntrar.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Intent telaHome = new Intent(MainActivity.this, HomeActivity.class);
-                startActivity(telaHome);
-                finish();
-            }
-        });
+        btnEntrar.setOnClickListener(this);
+
+        Button btnViagem = findViewById(R.id.btnViagem);
+        btnViagem.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        Intent calculator = new Intent(MainActivity.this, HomeActivity.class);
+        Intent trip = new Intent(MainActivity.this, TripActivity.class);
+        if(view.getId() == R.id.btnEntrar){
+            startActivity(calculator);
+        }else{
+            startActivity(trip);
+        }
     }
 }

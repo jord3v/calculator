@@ -50,5 +50,11 @@
             android:layout_height="wrap_content"
             android:text="@string/dividir_numeros" />
 
+        <Button
+            android:id="@+id/btnVoltar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Voltar" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

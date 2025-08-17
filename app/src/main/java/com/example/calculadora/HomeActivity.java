@@ -26,21 +26,27 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         Button btnDividir = findViewById(R.id.btnDividir);
         btnDividir.setOnClickListener(this);
 
+        Button btnVoltar = findViewById(R.id.btnVoltar);
+        btnVoltar.setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View view) {
-        Intent calculator = new Intent(HomeActivity.this, CalculatorActivity.class);
-
-        if(view.getId() == R.id.btnSomar){
-            calculator.putExtra("operacao", "Somar");
-        } else if (view.getId() == R.id.btnSubtrair) {
-            calculator.putExtra("operacao", "Subtrair");
-        } else if (view.getId() == R.id.btnMultiplicar) {
-            calculator.putExtra("operacao", "Multiplicar");
+        if(view.getId() == R.id.btnVoltar){
+            finish();
         }else{
-            calculator.putExtra("operacao", "Dividir");
+            Intent calculator = new Intent(this, CalculatorActivity.class);
+            if(view.getId() == R.id.btnSomar){
+                calculator.putExtra("operacao", "Somar");
+            } else if (view.getId() == R.id.btnSubtrair) {
+                calculator.putExtra("operacao", "Subtrair");
+            } else if (view.getId() == R.id.btnMultiplicar) {
+                calculator.putExtra("operacao", "Multiplicar");
+            }else{
+                calculator.putExtra("operacao", "Dividir");
+            }
+            startActivity(calculator);
         }
-        startActivity(calculator);
     }
 }
